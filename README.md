@@ -37,3 +37,7 @@
 3. - INT8 https://github.com/Tencent/ncnn/blob/master/docs/how-to-use-and-FAQ/quantized-int8-inference.md
 
 # ONNX Runtime
+
+1. https://onnxruntime.ai/docs/performance/model-optimizations/graph-optimizations.html#graph-optimizations-in-onnx-runtime
+2. https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html
+
