@@ -21,4 +21,10 @@
 2. Paper: https://arxiv.org/abs/2006.06762
 3. Tutorial https://tvm.apache.org/docs/how_to/tune_with_autoscheduler/index.html
 4. Code : https://tvm.apache.org/docs/how_to/tune_with_autoscheduler/tune_network_arm.html#sphx-glr-how-to-tune-with-autoscheduler-tune-network-arm-py
-5. 
+
+# NCNN 
+
+독자적으로 ACL을 최적화한 프로젝트 (vcpkg를 이용하여 NCNN 설치가 가능함)
+
+1. https://github.com/Piorosen/Benchmark-Inference-Engine/tree/main/arm64/ncnn
+2. https://github.com/Tencent/ncnn
