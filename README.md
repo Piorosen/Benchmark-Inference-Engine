@@ -26,6 +26,7 @@
 
 1. https://github.com/tigert1998/tvm-models-baseline
 2. https://discuss.tvm.apache.org/t/tvm-int8-quantization-slower-than-float-on-arm/13284
+3. https://discuss.tvm.apache.org/t/auto-scheduler-seems-slower-on-int8/9585
 
 # NCNN 
 
