@@ -41,3 +41,10 @@
 1. https://onnxruntime.ai/docs/performance/model-optimizations/graph-optimizations.html#graph-optimizations-in-onnx-runtime
 2. https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html
 
+# ArmCL 
+
+1. https://github.com/ARM-software/ComputeLibrary/blob/v22.05/src/cpu/operators/CpuGemmConv2d.h
+2. INT8, UINT8, QINT8, QUINT8
+3. https://github.com/ARM-software/ComputeLibrary/blob/v22.05/src/cpu/operators/internal/CpuGemmAssemblyDispatch.cpp
+
+
