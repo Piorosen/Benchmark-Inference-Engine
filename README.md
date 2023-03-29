@@ -22,9 +22,17 @@
 3. Tutorial https://tvm.apache.org/docs/how_to/tune_with_autoscheduler/index.html
 4. Code : https://tvm.apache.org/docs/how_to/tune_with_autoscheduler/tune_network_arm.html#sphx-glr-how-to-tune-with-autoscheduler-tune-network-arm-py
 
+# TVM with INT8
+
+1. https://github.com/tigert1998/tvm-models-baseline
+2. https://discuss.tvm.apache.org/t/tvm-int8-quantization-slower-than-float-on-arm/13284
+
 # NCNN 
 
 독자적으로 ACL을 최적화한 프로젝트 (vcpkg를 이용하여 NCNN 설치가 가능함)
 
 1. https://github.com/Piorosen/Benchmark-Inference-Engine/tree/main/arm64/ncnn
 2. https://github.com/Tencent/ncnn
+3. - INT8 https://github.com/Tencent/ncnn/blob/master/docs/how-to-use-and-FAQ/quantized-int8-inference.md
+
+# ONNX Runtime
