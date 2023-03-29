@@ -35,6 +35,7 @@
 1. https://github.com/Piorosen/Benchmark-Inference-Engine/tree/main/arm64/ncnn
 2. https://github.com/Tencent/ncnn
 3. - INT8 https://github.com/Tencent/ncnn/blob/master/docs/how-to-use-and-FAQ/quantized-int8-inference.md
+4. https://openjournals.uwaterloo.ca/index.php/vsl/article/download/1645/2014
 
 # ONNX Runtime
 
