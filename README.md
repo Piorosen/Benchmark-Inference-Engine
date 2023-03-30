@@ -5,7 +5,7 @@
 - [ ] 2. AutoScheduler of TVM 
 - [x] 3. NCNN
 - [x] 4. ONNX Runtime
-- [ ] 5. TFLite
+- [x] 5. TFLite
 
 # 신경망 모델 정보
 
