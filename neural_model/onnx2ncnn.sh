@@ -23,10 +23,10 @@ cp ../onnx/mobilenet.onnx ./mobilenet.onnx
 ./onnx2ncnn.exe ./mobilenet.onnx ./mobilenet.param ./mobilenet.bin
 ./onnx2ncnn.exe ./googlenet.onnx ./googlenet.param ./googlenet.bin
 
-.\ncnnoptimize.exe .\alexnet.param .\alexnet.bin .\alexnet-opt.param .\alexnet-opt.bin 0
-.\ncnnoptimize.exe .\vgg16.param .\vgg16.bin .\vgg16-opt.param .\vgg16-opt.bin 0
-.\ncnnoptimize.exe .\mobilenet.param .\mobilenet.bin .\mobilenet-opt.param .\mobilenet-opt.bin 0
-.\ncnnoptimize.exe .\googlenet.param .\googlenet.bin .\googlenet-opt.param .\googlenet-opt.bin 0
+.\ncnnoptimize.exe .\alexnet.param .\alexnet.bin .\alexnet-opt.param .\alexnet-opt.bin 65536
+.\ncnnoptimize.exe .\vgg16.param .\vgg16.bin .\vgg16-opt.param .\vgg16-opt.bin 65536
+.\ncnnoptimize.exe .\mobilenet.param .\mobilenet.bin .\mobilenet-opt.param .\mobilenet-opt.bin 65536
+.\ncnnoptimize.exe .\googlenet.param .\googlenet.bin .\googlenet-opt.param .\googlenet-opt.bin 65536
 
 .\ncnn2table.exe alexnet-opt.param alexnet-opt.bin imagelist.txt alexnet.table mean=[104,117,123] norm=[0.017,0.017,0.017] shape=[227,227,3] pixel=BGR thread=8 method=kl
 .\ncnn2table.exe vgg16-opt.param vgg16-opt.bin imagelist.txt vgg16.table mean=[104,117,123] norm=[0.017,0.017,0.017] shape=[224,224,3] pixel=BGR thread=8 method=kl
