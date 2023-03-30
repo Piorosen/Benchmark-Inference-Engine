@@ -7,6 +7,11 @@ cd ncnn
 # python3 -m onnxsim ../onnx/googlenet.onnx ./googlenet.onnx
 # python3 -m onnxsim ../onnx/mobilenet.onnx ./mobilenet.onnx
 
+# cp ../onnx/bvlcalexnet-12.onnx ./alexnet.onnx
+# cp ../onnx/vgg16-12.onnx ./vgg16.onnx
+# cp ../onnx/googlenet-12.onnx ./googlenet.onnx
+# cp ../onnx/mobilenetv2-12.onnx ./mobilenet.onnx
+
 cp ../onnx/alexnet.onnx ./alexnet.onnx
 cp ../onnx/vgg16.onnx ./vgg16.onnx
 cp ../onnx/googlenet.onnx ./googlenet.onnx
