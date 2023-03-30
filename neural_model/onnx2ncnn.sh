@@ -18,10 +18,10 @@ cp ../onnx/vgg16.onnx ./vgg16.onnx
 cp ../onnx/googlenet.onnx ./googlenet.onnx
 cp ../onnx/mobilenet.onnx ./mobilenet.onnx
 
-./onnx2ncnn ./alexnet.onnx ./alexnet.param ./alexnet.bin
-./onnx2ncnn ./vgg16.onnx ./vgg16.param ./vgg16.bin
-./onnx2ncnn ./mobilenet.onnx ./mobilenet.param ./mobilenet.bin
-./onnx2ncnn ./googlenet.onnx ./googlenet.param ./googlenet.bin
+./onnx2ncnn.exe ./alexnet.onnx ./alexnet.param ./alexnet.bin
+./onnx2ncnn.exe ./vgg16.onnx ./vgg16.param ./vgg16.bin
+./onnx2ncnn.exe ./mobilenet.onnx ./mobilenet.param ./mobilenet.bin
+./onnx2ncnn.exe ./googlenet.onnx ./googlenet.param ./googlenet.bin
 
 .\ncnnoptimize.exe .\alexnet.param .\alexnet.bin .\alexnet-opt.param .\alexnet-opt.bin 0
 .\ncnnoptimize.exe .\vgg16.param .\vgg16.bin .\vgg16-opt.param .\vgg16-opt.bin 0
