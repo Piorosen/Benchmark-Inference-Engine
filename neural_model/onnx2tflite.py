@@ -1,15 +1,17 @@
-# pip install tensorflow onnx onnx-tf uvicorn
+# pip install tensorflow onnx onnx-tf uvicorn tensorflow-probability
+
 
 import onnx
 from onnx_tf.backend import prepare
 import os
+
 
 # Load the ONNX model
 
 print(os.getcwd())
 
 
-models = ["alexnet", "googlenet", "mobilenet", "vgg16"]
+models = ["alexnet",  "vgg16", "mobilenet", "googlenet"]
 for model_name in models:
     model = onnx.load(".\\neural_model\\onnx\\" + model_name + ".onnx")
     # Check that the IR is well formed  
