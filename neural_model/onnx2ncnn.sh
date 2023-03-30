@@ -1,12 +1,6 @@
 $!/bin/bash
 
-python -m pip install onnxsim   
-cp ./onnx ./ncnn
-
-mkdir alexnet
-mkdir vgg16
-mkdir mobilenet
-mkdir googlenet
+cd ncnn
 
 # python3 -m onnxsim ../onnx/alexnet.onnx ./alexnet.onnx
 # python3 -m onnxsim ../onnx/vgg16.onnx ./vgg16.onnx
@@ -39,3 +33,5 @@ cp ../onnx/mobilenet.onnx ./mobilenet.onnx
 .\ncnn2int8.exe googlenet-opt.param googlenet-opt.bin googlenet-int8.param googlenet-int8.bin googlenet.table
 
 
+
+cd ..
