@@ -1,3 +1,6 @@
 [submodule "arm64/tvm_sche"]
 	path = arm64/tvm_sche
 	url = https://github.com/tigert1998/tvm-models-baseline
+[submodule "neural_model/ncnn/images"]
+	path = neural_model/ncnn/images
+	url = https://github.com/nihui/imagenet-sample-images
