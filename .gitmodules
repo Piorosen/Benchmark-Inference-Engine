@@ -1,0 +1,3 @@
+[submodule "arm64/tvm_sche"]
+	path = arm64/tvm_sche
+	url = https://github.com/tigert1998/tvm-models-baseline
