@@ -4,12 +4,9 @@
 import onnx
 from onnx_tf.backend import prepare
 import os
-
-
 # Load the ONNX model
 
 print(os.getcwd())
-
 
 models = ["alexnet",  "vgg16", "mobilenet", "googlenet"]
 for model_name in models:
