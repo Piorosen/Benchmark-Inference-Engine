@@ -6,6 +6,13 @@
 3. NCNN
 4. ONNX Runtime
 
+# 신경망 모델 정보
+
+1. [AlexNet](https://pytorch.org/hub/pytorch_vision_alexnet/)
+2. [GoogLeNet](https://pytorch.org/hub/pytorch_vision_googlenet/)
+3. [MobileNetV2](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/)
+4. [VGG16](https://pytorch.org/hub/pytorch_vision_vgg/)
+
 # AutoTVM 관련 문서
 
 1. Android 관련 https://tvm.apache.org/docs/how_to/tune_with_autotvm/tune_relay_mobile_gpu.html
