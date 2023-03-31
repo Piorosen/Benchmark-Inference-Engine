@@ -5,8 +5,9 @@
 #include <ncnn/layer.h>
 #include <ncnn/net.h>
 #include <argparse/argparse.hpp>
-#include <opencv2/opencv.hpp>
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "stbi_image.h"
 
 int main(int argc, char** argv) { 
     argparse::ArgumentParser program("EventNVR");
@@ -55,8 +56,11 @@ int main(int argc, char** argv) {
     if (detector.load_model(bin_path.c_str()) != 0) {
         return false;
     }
-    cv::Mat image = cv::imread(img_path);
-    int image_w = image.cols; int image_h = image.rows;
+
+    // stbi_image_free()
+    // cv::Mat image = cv::imread(img_path);
+    int image_w, image_h;
+    unsigned char* data = stbi_load(img_path.c_str(), &image_w, &image_h, nullptr, 0);
     int w = image_w; int h = image_h; float scale = 1.f;
 
     if (w > h) {
@@ -68,7 +72,8 @@ int main(int argc, char** argv) {
         h = image_size;
         w = w  * scale;
     }
-    ncnn::Mat in = ncnn::Mat::from_pixels_resize(image.data, ncnn::Mat::PIXEL_BGR, image_w, image_h, w, h);
+
+    ncnn::Mat in = ncnn::Mat::from_pixels_resize(data, ncnn::Mat::PIXEL_BGR, image_w, image_h, w, h);
     int w_pad = image_size - w;
     int h_pad = image_size - h;
     ncnn::Mat in_pad;
@@ -83,9 +88,9 @@ int main(int argc, char** argv) {
 
         ncnn::Mat input;
         ncnn::Mat output;
-        ex.input("input_image", in);
-        ex.extract("scores", output);
-        ex.extract("masks", output);
+        ex.input("input", in);
+        ex.extract("output", output);
+        // ex.extract("masks", output);
         auto end = std::chrono::high_resolution_clock::now();
         std::cout << "[ " << i + 1 << "/" << 50 << "]\t" << std::chrono::duration_cast<std::chrono::milliseconds>((end - start)).count() << "ms" << std::endl;
         time.push_back((end - start));
