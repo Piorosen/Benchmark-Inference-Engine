@@ -96,7 +96,5 @@ int main(int argc, char** argv) {
         time.push_back((end - start));
     }
 
-
-
     return 0;
 }
