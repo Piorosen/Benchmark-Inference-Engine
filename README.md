@@ -68,6 +68,6 @@
 - 2. Linux
   - [x] 1. AutoTVM
   - [x] 1. Auto Scheduler
-  - [x] 1. NCNN
+  - [ ] 1. NCNN
   - [x] 1. ONNX Runtime
   - [ ] 1. TFLite
