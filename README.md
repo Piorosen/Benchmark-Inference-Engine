@@ -3,6 +3,8 @@
 
 # 신경망 모델 정보
 
+[](https://github.com/animikhaich/AlexNet-Tensorflow/blob/main/AlexNet_Prototype_Model.ipynb)
+
 1. [AlexNet](https://pytorch.org/hub/pytorch_vision_alexnet/)
 2. [GoogLeNet](https://pytorch.org/hub/pytorch_vision_googlenet/)
 3. [MobileNetV2](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/)
@@ -51,7 +53,7 @@
 3. https://github.com/ARM-software/ComputeLibrary/blob/v22.05/src/cpu/operators/internal/CpuGemmAssemblyDispatch.cpp
 
 
-# 신경망 관련 정보 구현 
+# 신경망 관련 정보 구현 (다해땨!!)
 - [x] 1. AutoTVM
 - [x] 2. AutoScheduler of TVM 
 - [x] 3. NCNN
