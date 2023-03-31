@@ -1,12 +1,6 @@
 # Benchmark-Inference-Engine
 다양한 종류의 딥러닝 인퍼런스 엔진 구현
 
-- [ ] 1. AutoTVM
-- [ ] 2. AutoScheduler of TVM 
-- [x] 3. NCNN
-- [x] 4. ONNX Runtime
-- [x] 5. TFLite
-
 # 신경망 모델 정보
 
 1. [AlexNet](https://pytorch.org/hub/pytorch_vision_alexnet/)
@@ -57,3 +51,23 @@
 3. https://github.com/ARM-software/ComputeLibrary/blob/v22.05/src/cpu/operators/internal/CpuGemmAssemblyDispatch.cpp
 
 
+# 신경망 관련 정보 구현 
+- [x] 1. AutoTVM
+- [x] 2. AutoScheduler of TVM 
+- [x] 3. NCNN
+- [x] 4. ONNX Runtime
+- [x] 5. TFLite
+
+# Android 및 보드간 코드 작성
+- 1. Android
+  - [ ] 1. AutoTVM
+  - [ ] 1. Auto Scheduler
+  - [ ] 1. NCNN
+  - [ ] 1. ONNX Runtime
+  - [ ] 1. TFLite
+- 2. Linux
+  - [ ] 1. AutoTVM
+  - [ ] 1. Auto Scheduler
+  - [ ] 1. NCNN
+  - [ ] 1. ONNX Runtime
+  - [ ] 1. TFLite
