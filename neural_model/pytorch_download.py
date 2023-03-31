@@ -10,10 +10,10 @@ mbn2.eval()
 goog.eval() 
 alex.eval() 
 
-# import urllib
+# import urllib 
 # url, filename = ("https://github.com/pytorch/hub/raw/master/images/dog.jpg", "dog.jpg")
 # try: urllib.URLopener().retrieve(url, filename)
-# except: urllib.request.urlretrieve(url, filename)
+# except: urllib.request.ur qlretrieve(url, filename)
 
 import torch.onnx 
 
@@ -30,9 +30,10 @@ def convert(model, name, size):
          opset_version=12,    # the ONNX version to export the model to 
          do_constant_folding=True,  # whether to execute constant folding for optimization 
          input_names = ['input'],   # the model's input names 
-         output_names = ['output'], # the model's output names 
-         dynamic_axes={'input' : {0 : 'batch_size'},    # variable length axes 
-                                'output' : {0 : 'batch_size'}}) 
+         output_names = ['output'], # the model's output names
+    ) 
+        #  dynamic_axes={'input' : {0 : 'batch_size'},    # variable length axes 
+        #                         'output' : {0 : 'batch_size'}}) 
     print(" ") 
     print('Model has been converted to ONNX') 
 
