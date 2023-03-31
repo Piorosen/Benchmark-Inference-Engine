@@ -38,14 +38,15 @@ def representative_dataset_gen():
       data = np.random.rand(1, 224, 224, 3)
       yield [data.astype(np.float32)]
 
-models = [mobilenetV2, vgg16, alex, google]
+models = [mobilenetV2, google, alex, vgg16]
 
 for m_func in models:
     model, name = m_func()
-
+    print(name)
     converter = tf.lite.TFLiteConverter.from_keras_model(model)
     tflite_model = converter.convert()
-    with open(name + "-.tflite", 'wb') as f:
+    print(name+"DONE")
+    with open(name + ".tflite", 'wb') as f:
         f.write(tflite_model)
 
     # converter = tf.lite.TFLiteConverter.from_keras_model(model)

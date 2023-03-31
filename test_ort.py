@@ -5,25 +5,20 @@ import torch
 import time
 import argparse
 
-
 # https://github.com/microsoft/onnxruntime-openenclave/blob/openenclave-public/docs/ONNX_Runtime_Perf_Tuning.md
-m_name = ["alexnet", "googlenet", "mobilenet", "vgg16"]
-
-for item in m_name:
-    model_name = item
-    model_file = model_name + ".onnx"
-    model_opt_file = model_name + "-opt.onnx"
-    model_quant_file = model_name + "-quant.onnx"
+model_name = "alexnet"
+model_file = model_name + ".onnx"
+model_opt_file = model_name + "-opt.onnx"
+model_quant_file = model_name + "-quant.onnx"
 # https://github.com/microsoft/onnxruntime/issues/3130
-    quantized_model = quantize_dynamic(model_file, model_quant_file, weight_type=QuantType.QUInt8)
+# quantized_model = quantize_dynamic(model_file, model_quant_file, weight_type=QuantType.QUInt8)
 
-    sess_options = ort.SessionOptions()
+sess_options = ort.SessionOptions()
 # sess_options.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
-    sess_options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
-    sess_options.optimized_model_filepath = model_opt_file
-    ort_sess = ort.InferenceSession(model_file, sess_options, providers=["CPUExecutionProvider"])
+sess_options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
+sess_options.optimized_model_filepath = model_opt_file
+ort_sess = ort.InferenceSession(model_file, sess_options, providers=["CPUExecutionProvider"])
 
-exit(0)
 def to_numpy(tensor):
     return tensor.detach().cpu().numpy() if tensor.requires_grad else tensor.cpu().numpy()
 
