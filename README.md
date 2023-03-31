@@ -59,6 +59,11 @@
 - [x] 3. NCNN
 - [x] 4. ONNX Runtime
 - [x] 5. TFLite
+- [x] 6. AutoTVM - Quant
+- [x] 7. AutoScheduler of TVM  - Quant
+- [x] 8. NCNN - Quant
+- [x] 9. ONNX Runtime - Quant
+- [x] 10. TFLite - Quant
 
 # Android 및 보드간 코드 작성
 - 1. Android
