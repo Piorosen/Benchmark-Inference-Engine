@@ -60,14 +60,14 @@
 
 # Android 및 보드간 코드 작성
 - 1. Android
-  - [ ] 1. AutoTVM
-  - [ ] 1. Auto Scheduler
+  - [x] 1. AutoTVM
+  - [x] 1. Auto Scheduler
   - [ ] 1. NCNN
   - [ ] 1. ONNX Runtime
   - [ ] 1. TFLite
 - 2. Linux
-  - [ ] 1. AutoTVM
-  - [ ] 1. Auto Scheduler
-  - [ ] 1. NCNN
+  - [x] 1. AutoTVM
+  - [x] 1. Auto Scheduler
+  - [x] 1. NCNN
   - [ ] 1. ONNX Runtime
   - [ ] 1. TFLite
