@@ -17,3 +17,5 @@ x64/
 *.pb/
 *.pyc
 .vscode/
+*.tflite
+*.pb
