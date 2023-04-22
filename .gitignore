@@ -15,4 +15,5 @@ x64/
 *.bin
 *.param
 *.pb/
-
+*.pyc
+.vscode/
