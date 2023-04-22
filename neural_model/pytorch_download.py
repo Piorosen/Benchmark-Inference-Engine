@@ -28,7 +28,7 @@ def convert(model, name, size):
     # quantize_static(model_file, model_quant_file, dr, quant_format=QuantFormat.QDQ, weight_type=QuantType.QInt8)
     # # quantize_dynamic(weight_type=QuantType.QUInt8)
 
-    # o2t.onnx2tflite_fp32(name)
+    o2t.onnx2tflite_fp32(name)
     o2t.pb2tflite_int8(name)
 
     print(" ") 
