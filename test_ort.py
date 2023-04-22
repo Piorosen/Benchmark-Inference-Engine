@@ -11,7 +11,7 @@ model_file = model_name + ".onnx"
 model_opt_file = model_name + "-opt.onnx"
 model_quant_file = model_name + "-quant.onnx"
 # https://github.com/microsoft/onnxruntime/issues/3130
-# quantized_model = quantize_dynamic(model_file, model_quant_file, weight_type=QuantType.QUInt8)
+quantized_model = quantize_dynamic(model_file, model_quant_file, weight_type=QuantType.QUInt8)
 
 sess_options = ort.SessionOptions()
 sess_options.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL

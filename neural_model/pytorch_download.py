@@ -1,5 +1,6 @@
 import torch
 import torch.onnx 
+from onnxruntime.quantization import QuantType, quantize_static, QuantFormat
 
 #Function to Convert to ONNX 
 def convert(model, name, size): 
@@ -16,8 +17,12 @@ def convert(model, name, size):
          input_names = ['input'],   # the model's input names 
          output_names = ['output'], # the model's output names
     ) 
-        #  dynamic_axes={'input' : {0 : 'batch_size'},    # variable length axes 
-        #                         'output' : {0 : 'batch_size'}}) 
+
+    model_file = "neural_model/onnx/" + name + ".onnx"
+    model_quant_file = "neural_model/onnx/" + name + "-quint8.onnx"
+    # https://github.com/microsoft/onnxruntime/issues/3130
+    quantize_static(model_file, model_quant_file, quant_format=QuantFormat.QOperator, weight_type=QuantType.QInt8)
+
     print(" ") 
     print('Model has been converted to ONNX') 
 
