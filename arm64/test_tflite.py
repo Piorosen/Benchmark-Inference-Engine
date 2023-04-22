@@ -5,36 +5,38 @@ import tflite_runtime.interpreter as tflite
 import numpy as np
 import time
 
-interpreter = tflite.Interpreter(model_path="./alexnet-int8.tflite")
+def inference(model_name):
+    interpreter = tflite.Interpreter(model_path=model_name)
+    # Get input and output tensors.
+    input_details = interpreter.get_input_details()
+    output_details = interpreter.get_output_details()
+    # # Print the input and output details of the model
+    # # print()
+    # print("Input details:")
+    # print(input_details)
+    # # # print(input_details[0]['dtype'])
 
-# Get input and output tensors.
-input_details = interpreter.get_input_details()
-output_details = interpreter.get_output_details()
+    # # print("Output details:")
+    # # print(output_details)
+    # # print()
 
-# Print the input and output details of the model
-# print()
-# print("Input details:")
-# print(input_details)
-# # print(input_details[0]['dtype'])
+    # Convert features to NumPy array
+    np_features = np.random.rand(input_details[0]['shape'][1], input_details[0]['shape'][2], input_details[0]['shape'][3]).astype(input_details[0]['dtype'])
 
-# print("Output details:")
-# print(output_details)
-# print()
+    # Add dimension to input sample (TFLite model expects (# samples, data))
+    np_features = np.expand_dims(np_features, axis=0)
 
-# Convert features to NumPy array
-np_features = np.random.rand(3,227,227).astype(input_details[0]['dtype'])
+    for _ in range(100):
+        # Allocate tensors
+        interpreter.allocate_tensors()
+        # Create input tensor out of raw features
+        interpreter.set_tensor(input_details[0]['index'], np_features)
 
-# Add dimension to input sample (TFLite model expects (# samples, data))
-np_features = np.expand_dims(np_features, axis=0)
+        start = time.time_ns()
+        interpreter.invoke()
+        end = time.time_ns()
+        print((end - start) / 1000.0 / 1000.0)
+    interpreter.close()
 
-
-for _ in range(100):
-    # Allocate tensors
-    interpreter.allocate_tensors()
-    # Create input tensor out of raw features
-    interpreter.set_tensor(input_details[0]['index'], np_features)
-
-    start = time.time_ns()
-    interpreter.invoke()
-    end = time.time_ns()
-    print((end - start) / 1000.0 / 1000.0)
+if __name__ == "__main__":
+    inference("./alexnet.tflite")
