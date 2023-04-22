@@ -28,11 +28,10 @@ def onnx2tflite_fp32(model_name, model_size):
     tf_rep.export_graph("./neural_model/tf/" + model_name)
 
     converter = tf.lite.TFLiteConverter.from_saved_model("./neural_model/tf/" + model_name)
-    converter.optimizations = [tf.lite.Optimize.DEFAULT]
     tflite_model = converter.convert()
 
     # Save the model.
-    with open("./neural_model/tflite/" +model_name + ".tflite", 'wb') as f:
+    with open("./neural_model/tflite/" + model_name + ".tflite", 'wb') as f:
         f.write(tflite_model)
 
 def pb2tflite_int8(model_name, model_size):

@@ -6,10 +6,8 @@ import onnx2tflite as o2t
 
 #Function to Convert to ONNX 
 def convert(model, name, size): 
-    # Let's create a dummy input tensor  
     dummy_input = torch.randn(1, 3, size, size, requires_grad=True)  
     
-    # Export the model   
     torch.onnx.export(model,         # model being run 
          dummy_input,       # model input (or a tuple for multiple inputs) 
          "neural_model/onnx/" + name + ".onnx",       # where to save the model  
@@ -21,12 +19,10 @@ def convert(model, name, size):
     ) 
 
     model_file = "neural_model/onnx/" + name + ".onnx"
-    model_quant_file = "neural_model/onnx/" + name + "-quint8.onnx"
+    model_quant_file = "neural_model/onnx/" + name + "-qint8.onnx"
     # https://github.com/microsoft/onnxruntime/issues/3130
     dr = onnx_data_reader.DataReader(model_file)
-    # quantize_static(model_file, model_quant_file, dr, quant_format=QuantFormat.QOperator, weight_type=QuantType.QInt8, )
     quantize_static(model_file, model_quant_file, dr, quant_format=QuantFormat.QDQ, weight_type=QuantType.QInt8)
-    # quantize_dynamic(weight_type=QuantType.QUInt8)
 
     o2t.onnx2tflite_fp32(name, size)
     o2t.pb2tflite_int8(name, size)
