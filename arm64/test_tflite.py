@@ -6,7 +6,7 @@ import numpy as np
 import time
 
 def inference(model_name):
-    interpreter = tflite.Interpreter(model_path=model_name)
+    interpreter = tflite.Interpreter(model_path=model_name + ".tflite")
     # Get input and output tensors.
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
@@ -26,17 +26,16 @@ def inference(model_name):
     # Add dimension to input sample (TFLite model expects (# samples, data))
     np_features = np.expand_dims(np_features, axis=0)
 
-    for _ in range(100):
+    for _ in range(10):
         # Allocate tensors
         interpreter.allocate_tensors()
         # Create input tensor out of raw features
         interpreter.set_tensor(input_details[0]['index'], np_features)
 
-        start = time.time_ns()
+        start = time.perf_counter_ns()
         interpreter.invoke()
-        end = time.time_ns()
+        end = time.perf_counter_ns()
         print((end - start) / 1000.0 / 1000.0)
-    interpreter.close()
-
+    
 if __name__ == "__main__":
-    inference("./alexnet.tflite")
+    inference("./resnet101")
