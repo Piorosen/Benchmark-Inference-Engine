@@ -1,4 +1,5 @@
 # pip install tensorflow onnx onnx-tf uvicorn tensorflow-probability onnx2keras
+# pip install xgboost
 
 
 # import onnx
