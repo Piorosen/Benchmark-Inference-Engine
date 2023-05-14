@@ -32,7 +32,6 @@ namespace Inference
             sess_options.AppendExecutionProvider_CPU(1);
             sess_options.AppendExecutionProvider_Nnapi(NnapiFlags.NNAPI_FLAG_CPU_ONLY);
 
-            //sess_options.AppendExecutionProvider_CPU(1);
             Stream fileStream = FileSystem.Current.OpenAppPackageFileAsync(models).Result;
             var modelStream = new MemoryStream();
             fileStream.CopyTo(modelStream);
@@ -49,7 +48,7 @@ namespace Inference
             
             Random r = new Random();
             
-            for (int i = 0; i < 100; i++)
+            for (int e = 0; e < 100; e++)
             {
                 float[] random_shape = new float[model_shape];
                 for (int j = 0; j < model_shape; j++) 
@@ -65,17 +64,6 @@ namespace Inference
                 long end = DateTime.UtcNow.Ticks;
                 Console.WriteLine($"{models} inference {new TimeSpan(end - start).TotalMilliseconds} ms");
             }
-
-
-            //        repeat = 10
-            //for idx in range(0, repeat):
-            //    start = time.perf_counter_ns()
-            //    # output = ort_sess.run("output", ort_inputs)
-            //    ort_sess.run(None, ort_inputs)
-            //    end = time.perf_counter_ns()
-            //    print("[ " + str(idx + 1) + " / " + str(repeat) + " ]\t" + str((end - start) / 1000 / 1000) + " ms");
-
-
         }
 
     }

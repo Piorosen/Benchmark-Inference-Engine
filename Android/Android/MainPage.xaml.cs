@@ -30,19 +30,22 @@ public partial class MainPage : ContentPage
             //"resnet101-qint8",
             //"vgg16-qint8",
         };
-		//foreach ( var model in models ) { 
-		//	data.Onnx($"Onnx/{model}.onnx");
-		//}
-		data.TFLite($"Onnx/{models[0]}.onnx");
-
-        count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+        data.TFLite($"tflite/{models[0]}.onnx");
 
 		SemanticScreenReader.Announce(CounterBtn.Text);
+        return;
+
+  //      foreach (var model in models)
+  //      {
+  //          data.Onnx($"Onnx/{model}.onnx");
+  //      }
+  //      count++;
+
+		//if (count == 1)
+		//	CounterBtn.Text = $"Clicked {count} time";
+		//else
+		//	CounterBtn.Text = $"Clicked {count} times";
+
 	}
 }
 
