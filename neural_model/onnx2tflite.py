@@ -44,8 +44,8 @@ def pb2tflite_int8(model_name, model_size):
     converter.target_spec.supported_ops = [
         tf.lite.OpsSet.TFLITE_BUILTINS_INT8]
     converter.representative_dataset = representative_dataset_gen
-    converter.inference_input_type = tf.int8
-    converter.inference_output_type = tf.int8
+    converter.inference_input_type = tf.uint8
+    converter.inference_output_type = tf.uint8
 
     tflite_model = converter.convert()
     with open("./neural_model/tflite/" +model_name + "-int8.tflite", 'wb') as f:

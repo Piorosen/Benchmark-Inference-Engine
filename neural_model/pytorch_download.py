@@ -22,24 +22,24 @@ def convert(model, name, size):
     model_quant_file = "neural_model/onnx/" + name + "-qint8.onnx"
     # https://github.com/microsoft/onnxruntime/issues/3130
     dr = onnx_data_reader.DataReader(model_file)
-    quantize_static(model_file, model_quant_file, dr, quant_format=QuantFormat.QDQ, weight_type=QuantType.QInt8)
+    # quantize_static(model_file, model_quant_file, dr, quant_format=QuantFormat.QDQ, weight_type=QuantType.QInt8)
 
-    o2t.onnx2tflite_fp32(name, size)
+    # o2t.onnx2tflite_fp32(name, size)
     o2t.pb2tflite_int8(name, size)
 
     print(" ") 
     print('Model has been converted to ONNX') 
 
 models = [ 
-    (torch.hub.load('pytorch/vision:v0.10.0', 'vgg16', pretrained=True),        224,  "vgg16"),
-    (torch.hub.load('pytorch/vision:v0.10.0', 'mobilenet_v2', pretrained=True), 224,  "mobilenet_v2"),
-    (torch.hub.load('pytorch/vision:v0.10.0', 'googlenet', pretrained=True),    224,  "googlenet"),
-    (torch.hub.load('pytorch/vision:v0.10.0', 'alexnet', pretrained=True),      227,  "alexnet"),
+    # (torch.hub.load('pytorch/vision:v0.10.0', 'vgg16', pretrained=True),        224,  "vgg16"),
+    # (torch.hub.load('pytorch/vision:v0.10.0', 'mobilenet_v2', pretrained=True), 224,  "mobilenet_v2"),
+    # (torch.hub.load('pytorch/vision:v0.10.0', 'googlenet', pretrained=True),    224,  "googlenet"),
+    # (torch.hub.load('pytorch/vision:v0.10.0', 'alexnet', pretrained=True),      227,  "alexnet"),
     (torch.hub.load('pytorch/vision:v0.10.0', 'resnet18', pretrained=True),     224,  "resnet18"),
-    (torch.hub.load('pytorch/vision:v0.10.0', 'resnet34', pretrained=True),     224,  "resnet34"),
-    (torch.hub.load('pytorch/vision:v0.10.0', 'resnet50', pretrained=True),     224,  "resnet50"),
-    (torch.hub.load('pytorch/vision:v0.10.0', 'resnet101', pretrained=True),    224,  "resnet101"),
-    (torch.hub.load('pytorch/vision:v0.10.0', 'resnet152', pretrained=True),    224,  "resnet152")
+    # (torch.hub.load('pytorch/vision:v0.10.0', 'resnet34', pretrained=True),     224,  "resnet34"),
+    # (torch.hub.load('pytorch/vision:v0.10.0', 'resnet50', pretrained=True),     224,  "resnet50"),
+    # (torch.hub.load('pytorch/vision:v0.10.0', 'resnet101', pretrained=True),    224,  "resnet101"),
+    # (torch.hub.load('pytorch/vision:v0.10.0', 'resnet152', pretrained=True),    224,  "resnet152")
 ]
 
 # set the model to inference mode 
