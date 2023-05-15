@@ -1,4 +1,4 @@
-# python3 -m pip install tflite-runtime numpy
+# python3 -m pip install tflite-runtime-nightly numpy
 # https://gist.github.com/ShawnHymel/f7b5014d6b725cb584a1604743e4e878
 
 import tflite_runtime.interpreter as tflite
