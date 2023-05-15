@@ -24,6 +24,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import org.tensorflow.lite.Interpreter
 import org.tensorflow.lite.support.common.FileUtil
+import java.nio.ByteBuffer
 import java.nio.FloatBuffer
 
 
@@ -40,16 +41,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         var button = findViewById<Button>(R.id.button);
         button.setOnClickListener {
-            val models = arrayOf("alexnet", "googlenet", "mobilenet_v2", "resnet18", "resnet50", "resnet101", "vgg16")
+            val models = arrayOf("alexnet", "googlenet", "mobilenet_v2", "resnet50", "resnet101", "vgg16")
+//            val models = arrayOf("alexnet", "googlenet", "mobilenet_v2", "resnet18", "resnet50", "resnet101", "vgg16")
             Toast.makeText(applicationContext, "hello world!", Toast.LENGTH_LONG).show()
             for (model in models){
                 val options = Interpreter.Options()
                 options.setUseXNNPACK(true)
-                val threads = 8
+                val threads = 2
                 options.setNumThreads(threads)
                 Log.i("CHACHA", threads.toString())
                 Log.i("CHACHA", threads.toString())
-                val fileName = model + ".tflite"
+                val fileName = model + "-int8.tflite"
                 Log.i("CHACHA", "FILENAME : " + fileName)
 
                 val modelFile = FileUtil.loadMappedFile(applicationContext, fileName)
@@ -60,8 +62,8 @@ class MainActivity : AppCompatActivity() {
                 Log.i("CHACHA", input_name)
 
                 for (i: Int in 1..100) {
-                    val input = FloatBuffer.allocate(interpreter!!.getInputTensor(0).numElements())
-                    val output = FloatBuffer.allocate(interpreter!!.getOutputTensor(0).numElements())
+                    val input = ByteBuffer.allocate(interpreter!!.getInputTensor(0).numElements())
+                    val output = ByteBuffer.allocate(interpreter!!.getOutputTensor(0).numElements())
 
                     var inferenceTime = SystemClock.elapsedRealtimeNanos()
                     val result = interpreter?.run(input, output)
