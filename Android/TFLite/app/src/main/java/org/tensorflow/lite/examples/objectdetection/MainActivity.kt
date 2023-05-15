@@ -45,8 +45,10 @@ class MainActivity : AppCompatActivity() {
             for (model in models){
                 val options = Interpreter.Options()
                 options.setUseXNNPACK(true)
-
-                options.numThreads = 4
+                val threads = 8
+                options.setNumThreads(threads)
+                Log.i("CHACHA", threads.toString())
+                Log.i("CHACHA", threads.toString())
                 val fileName = model + ".tflite"
                 Log.i("CHACHA", "FILENAME : " + fileName)
 
