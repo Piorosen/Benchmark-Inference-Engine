@@ -40,26 +40,35 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         var button = findViewById<Button>(R.id.button);
         button.setOnClickListener {
+            val models = arrayOf("alexnet", "googlenet", "mobilenet_v2", "resnet18", "resnet50", "resnet101", "vgg16")
             Toast.makeText(applicationContext, "hello world!", Toast.LENGTH_LONG).show()
-            val options = Interpreter.Options()
-            options.numThreads = 2
+            for (model in models){
+                val options = Interpreter.Options()
+                options.setUseXNNPACK(true)
 
-            val modelFile = FileUtil.loadMappedFile(applicationContext, "alexnet.tflite")
-            interpreter = Interpreter(modelFile, options)
-            interpreter?.allocateTensors()
+                options.numThreads = 4
+                val fileName = model + ".tflite"
+                Log.i("CHACHA", "FILENAME : " + fileName)
 
-            val input = FloatBuffer.allocate(interpreter!!.getInputTensor(0).numElements())
-            val output = FloatBuffer.allocate(interpreter!!.getOutputTensor(0).numElements())
+                val modelFile = FileUtil.loadMappedFile(applicationContext, fileName)
+                interpreter = Interpreter(modelFile, options)
+                interpreter?.allocateTensors()
 
-            val input_name = interpreter!!.getInputTensor(0).name()
-            Log.i("CHACHA", input_name)
+                val input_name = interpreter!!.getInputTensor(0).name()
+                Log.i("CHACHA", input_name)
 
-            var inferenceTime = SystemClock.uptimeMillis()
-            val result = interpreter?.run(input, output)
-            var endInference = SystemClock.uptimeMillis()
+                for (i: Int in 1..100) {
+                    val input = FloatBuffer.allocate(interpreter!!.getInputTensor(0).numElements())
+                    val output = FloatBuffer.allocate(interpreter!!.getOutputTensor(0).numElements())
 
-            Log.i("CHACHA", (endInference-inferenceTime).toString())
-            interpreter.close()
+                    var inferenceTime = SystemClock.elapsedRealtimeNanos()
+                    val result = interpreter?.run(input, output)
+                    var endInference = SystemClock.elapsedRealtimeNanos()
+                    Log.i("CHACHA", ((endInference-inferenceTime) / 1000.0 / 1000.0).toString())
+                }
+
+                interpreter!!.close()
+            }
         }
     }
 
