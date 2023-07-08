@@ -81,7 +81,7 @@ int main(int argc, char** argv) {
 
     std::vector<std::chrono::nanoseconds> time;
 
-    for (int i = 0; i < 50; i++) { 
+    for (int i = 0; i < 100; i++) { 
         auto start = std::chrono::high_resolution_clock::now();
         detector.opt.use_vulkan_compute = false;
         ncnn::Extractor ex = detector.create_extractor();
@@ -92,7 +92,8 @@ int main(int argc, char** argv) {
         ex.extract("output", output);
         // ex.extract("masks", output);
         auto end = std::chrono::high_resolution_clock::now();
-        std::cout << "[ " << i + 1 << "/" << 50 << "]\t" << std::chrono::duration_cast<std::chrono::milliseconds>((end - start)).count() << "ms" << std::endl;
+        // std::cout << "[ " << i + 1 << "/" << 100 << "]\t" << std::chrono::duration_cast<std::chrono::nanoseconds>((end - start)).count() << "ms" << std::endl;
+        std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>((end - start)).count() << std::endl;
         time.push_back((end - start));
     }
 
