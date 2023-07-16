@@ -20,3 +20,7 @@ x64/
 *.tflite
 *.pb
 neural_model/tf/*
+neural_model/data/
+*.table
+.JPEG
+
